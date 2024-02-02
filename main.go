@@ -28,7 +28,6 @@ func createInterface(a int) {
 // 3 stages
 
 func main() {
-	red.Println("Warming up...")
 
 	user, err := user2.Current()
 	if err != nil {
@@ -41,9 +40,15 @@ func main() {
 		panic(0)
 	}
 
-	if _, err := os.Stat("/usr/traffarmer"); err == nil {
-		gr.Println("Starting the container, you've built the package before")
-	} else if errors.Is(err, os.ErrNotExist) {
-		red.Println("Oops, initializing...")
+	if len(os.Args) > 1 {
+		red.Println("Warming up...")
+
+	} else {
+		if _, err := os.Stat("/usr/traffarmer"); err == nil {
+			gr.Println("Starting the container, you've built the package before")
+		} else if errors.Is(err, os.ErrNotExist) {
+			red.Println("Oops, initializing...")
+		}
 	}
+
 }
