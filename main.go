@@ -19,7 +19,7 @@ func createInterface(a int) {
 		if err != nil {
 			log.Fatal(err)
 		}
-		gr.Println("Created interface no. " + strconv.Itoa(i))
+		gr.Println("Created interface tun" + strconv.Itoa(i))
 	}
 }
 
