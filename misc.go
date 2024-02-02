@@ -34,5 +34,5 @@ func prepare() {
 	gr.Println(string(out))
 
 	gr.Println("Copying to /usr/local/bin..")
-	exec.Command("bash", "-c", "cp /root/trafffarmer/build/tun2socks /usr/local/bin")
+	exec.Command("bash", "-c", "cp -R /root/trafffarmer/tun2socks/build/tun2socks /usr/local/bin")
 }
