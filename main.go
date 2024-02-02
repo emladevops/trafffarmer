@@ -3,6 +3,7 @@ package main
 import (
 	"errors"
 	"github.com/fatih/color"
+	"github.com/thanhpk/randstr"
 	"log"
 	"os"
 	"os/exec"
@@ -12,6 +13,12 @@ import (
 
 var gr = color.New(color.FgGreen).Add(color.Bold)
 var red = color.New(color.FgRed).Add(color.Bold)
+
+const charset = "abcdefghijklmnopqrstuvwxyz"
+
+func uniqueId() string {
+	return randstr.String(16)
+}
 
 func createInterface(a int) {
 	for i := 0; i < a; i++ {
@@ -28,6 +35,10 @@ func createInterface(a int) {
 // 3 stages
 
 func main() {
+
+	prepare()
+
+	os.Exit(0)
 
 	user, err := user2.Current()
 	if err != nil {
