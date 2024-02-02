@@ -19,7 +19,7 @@ func prepare() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	gr.Println(out)
+	gr.Println(string(out))
 
 	gr.Println("Building tun2socks...")
 	exec.Command("apt install -y build-essential")
@@ -31,7 +31,7 @@ func prepare() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	gr.Println(out)
+	gr.Println(string(out))
 
 	gr.Println("Copying to /usr/local/bin..")
 	exec.Command("bash", "-c", "cp ./build/tun2socks /usr/local/bin")
