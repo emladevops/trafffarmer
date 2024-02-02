@@ -1,10 +1,12 @@
 package main
 
 import (
-	"fmt"
+	"errors"
 	"github.com/fatih/color"
 	"log"
+	"os"
 	"os/exec"
+	user2 "os/user"
 	"strconv"
 )
 
@@ -23,10 +25,25 @@ func createInterface(a int) {
 	}
 }
 
-func main() {
-	fmt.Println("a")
-	c := color.New(color.FgGreen).Add(color.Bold)
-	c.Println("Creating interface..")
+// 3 stages
 
-	createInterface(3)
+func main() {
+	red.Println("Warming up...")
+
+	user, err := user2.Current()
+	if err != nil {
+		log.Fatalf(err.Error())
+	}
+	username := user.Username
+
+	if username != "root" {
+		red.Println("Run me as root!")
+		panic(0)
+	}
+
+	if _, err := os.Stat("/usr/traffarmer"); err == nil {
+		gr.Println("Starting the container, you've built the package before")
+	} else if errors.Is(err, os.ErrNotExist) {
+		red.Println("Oops, initializing...")
+	}
 }
