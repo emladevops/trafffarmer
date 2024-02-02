@@ -48,6 +48,7 @@ func main() {
 			gr.Println("Starting the container, you've built the package before")
 		} else if errors.Is(err, os.ErrNotExist) {
 			red.Println("Oops, initializing...")
+
 		}
 	}
 
